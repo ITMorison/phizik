@@ -20,11 +20,14 @@ st.markdown('<div class="section-label">Жүйе модульдері · таң�
 a, b, c = st.columns(3)
 with a:
     st.metric("1", "Аналитика", "MCDA + прогноз")
-    st.page_link("pages/1_Аналитика.py", label="Ашу", icon="📊")
+    if st.button("📊 Ашу", key="open_analytics", use_container_width=True):
+        st.switch_page("pages/1_Аналитика.py")
 with b:
     st.metric("2", "Эксперименттер", "SQLite ORM")
-    st.page_link("pages/2_Управление_экспериментами.py", label="Ашу", icon="🧪")
+    if st.button("🧪 Ашу", key="open_experiments", use_container_width=True):
+        st.switch_page("pages/2_Управление_экспериментами.py")
 with c:
     st.metric("3", "Есептер", "Excel + PDF")
-    st.page_link("pages/3_Экспорт_отчетов.py", label="Ашу", icon="📄")
+    if st.button("📄 Ашу", key="open_reports", use_container_width=True):
+        st.switch_page("pages/3_Экспорт_отчетов.py")
 st.info("Демонстрациялық эксперимент бірінші іске қосылғанда автоматты түрде дайындалады.")

@@ -33,7 +33,11 @@ def header():
     st.markdown('<p class="muted">Цифровая лаборатория для анализа, мониторинга и выбора оптимального состава биопластика.</p>', unsafe_allow_html=True)
     st.markdown('<div class="step-grid"><div class="step"><div class="step-icon">🌽</div><div class="step-title">Шикізат</div></div><div class="step"><div class="step-icon">▧</div><div class="step-title">Биопластик</div></div><div class="step"><div class="step-icon">⚗</div><div class="step-title">Деректер</div></div><div class="step"><div class="step-icon">⌘</div><div class="step-title">Python + AI</div></div><div class="step"><div class="step-icon">✣</div><div class="step-title">Оңтайлы құрам</div></div><div class="step"><div class="step-icon">▤</div><div class="step-title">EcoPack</div></div></div>', unsafe_allow_html=True)
     nav_home, nav_analytics, nav_experiments, nav_reports = st.columns(4)
-    nav_home.page_link("app.py", label="Басты бет", icon="🏠")
-    nav_analytics.page_link("pages/1_Аналитика.py", label="Аналитика", icon="📊")
-    nav_experiments.page_link("pages/2_Управление_экспериментами.py", label="Эксперименттер", icon="🧪")
-    nav_reports.page_link("pages/3_Экспорт_отчетов.py", label="Есептер", icon="📄")
+    if nav_home.button("🏠 Басты бет", use_container_width=True):
+        st.switch_page("app.py")
+    if nav_analytics.button("📊 Аналитика", use_container_width=True):
+        st.switch_page("pages/1_Аналитика.py")
+    if nav_experiments.button("🧪 Эксперименттер", use_container_width=True):
+        st.switch_page("pages/2_Управление_экспериментами.py")
+    if nav_reports.button("📄 Есептер", use_container_width=True):
+        st.switch_page("pages/3_Экспорт_отчетов.py")
