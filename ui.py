@@ -20,7 +20,7 @@ def apply_theme():
     .step-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:.5rem; margin:1rem 0; }
     .step { background:linear-gradient(145deg,#18382a,#0e2118); border:1px solid var(--line); border-radius:7px; padding:.7rem .3rem; text-align:center; min-height:76px; }
     .step-icon { font-size:1.4rem; }.step-title { font-size:.68rem; font-weight:800; text-transform:uppercase; line-height:1.15; margin-top:.35rem; }
-    .step-button button { min-height:76px; width:100%; border:1px solid var(--line); border-radius:7px; background:linear-gradient(145deg,#18382a,#0e2118); color:#eef8f0; font-weight:800; }
+    .step-button button { min-height:76px; width:100%; border:1px solid var(--line); border-radius:7px; background:linear-gradient(145deg,#18382a,#0e2118); color:#eef8f0; font-weight:800; white-space:normal; }
     .step-button button:hover { border-color:var(--lime); color:var(--lime); box-shadow:0 0 14px #69e6a455; }
     .ai-panel { background:radial-gradient(circle,#2b6336,#102419 70%); border:1px solid #6fce6c; border-radius:8px; text-align:center; padding:.8rem; }
     .ring { width:76px;height:76px;border:3px solid var(--lime);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:.5rem auto;color:var(--lime);font-weight:800;box-shadow:0 0 18px #91d86666; }
@@ -42,10 +42,10 @@ def header():
         ("✣ ОҢТАЙЛЫ ҚҰРАМ", "pages/1_Аналитика.py"),
         ("▤ ECOPACK", "pages/3_Экспорт_отчетов.py"),
     ]
-    for column, (label, target) in zip(pipeline, pipeline_actions):
+    for index, (column, (label, target)) in enumerate(zip(pipeline, pipeline_actions)):
         with column:
             st.markdown('<div class="step-button">', unsafe_allow_html=True)
-            if st.button(label, key=f"pipeline_{label}", use_container_width=True):
+            if st.button(label, key=f"pipeline_step_{index}", width="stretch", help=f"Открыть раздел: {label}"):
                 st.switch_page(target)
             st.markdown('</div>', unsafe_allow_html=True)
     nav_home, nav_analytics, nav_experiments, nav_reports = st.columns(4)
